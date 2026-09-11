@@ -1,0 +1,1 @@
+R36 Boot Video Converter v1.0.1 fix: previous rescue AAR explicitly stripped x264 while the app invoked libx264. Rebuild uses dev.ffmpegkit-maintained:ffmpeg-kit-min-gpl:6.0.3, which includes x264.
