@@ -23,14 +23,6 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Fetch embedded FFmpegKit engine
-        run: |
-          mkdir -p app/libs
-          curl -L --fail --retry 3 \
-            -o app/libs/ffmpeg-kit.aar \
-            https://github.com/Muwanguzi12/necxa-ffmpeg-rescue/releases/download/v6.0.3/ffmpeg-kit-release.aar
-          echo "820c74ef4cd82906bb94cb7053ad74dc421f34ff2088845eff1c67d85fcbd932  app/libs/ffmpeg-kit.aar" | sha256sum -c -
-
       - name: Apply compiler fix
         run: |
           sed -i 's/long timeMs = statistics.getTime();/double timeMs = statistics.getTime();/' app/src/main/java/com/madmantshirts/r36bootconverter/MainActivity.java
@@ -40,14 +32,14 @@ jobs:
 
       - name: Prepare artifact
         run: |
-          cp app/build/outputs/apk/debug/app-debug.apk R36-Boot-Video-Converter.apk
-          sha256sum R36-Boot-Video-Converter.apk > R36-Boot-Video-Converter.apk.sha256
+          cp app/build/outputs/apk/debug/app-debug.apk R36-Boot-Video-Converter-v1.0.1.apk
+          sha256sum R36-Boot-Video-Converter-v1.0.1.apk > R36-Boot-Video-Converter-v1.0.1.apk.sha256
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: R36-Boot-Video-Converter-APK
+          name: R36-Boot-Video-Converter-v1.0.1
           path: |
-            R36-Boot-Video-Converter.apk
-            R36-Boot-Video-Converter.apk.sha256
+            R36-Boot-Video-Converter-v1.0.1.apk
+            R36-Boot-Video-Converter-v1.0.1.apk.sha256
           if-no-files-found: error
