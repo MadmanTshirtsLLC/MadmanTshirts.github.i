@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.madmantshirts.r36bootconverter'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.madmantshirts.r36bootconverter'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+}
+
+dependencies {
+    implementation files('libs/ffmpeg-kit.aar')
+    implementation 'com.arthenica:smart-exception-java:0.2.1'
+    implementation 'androidx.annotation:annotation:1.8.2'
+}
