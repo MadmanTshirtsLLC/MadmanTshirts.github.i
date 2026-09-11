@@ -31,6 +31,10 @@ jobs:
             https://github.com/Muwanguzi12/necxa-ffmpeg-rescue/releases/download/v6.0.3/ffmpeg-kit-release.aar
           echo "820c74ef4cd82906bb94cb7053ad74dc421f34ff2088845eff1c67d85fcbd932  app/libs/ffmpeg-kit.aar" | sha256sum -c -
 
+      - name: Apply compiler fix
+        run: |
+          sed -i 's/long timeMs = statistics.getTime();/double timeMs = statistics.getTime();/' app/src/main/java/com/madmantshirts/r36bootconverter/MainActivity.java
+
       - name: Build installable debug APK
         run: gradle --no-daemon assembleDebug
 
